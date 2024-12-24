@@ -19,13 +19,36 @@ The reads were submitted to NCBI: [BioProject PRJNA1200955](https://www.ncbi.nlm
 ## Transcriptome assembly
 
 The main transcriptome assembly used in downstream analyses was performed with rnaSPAdes (Bushmanova et al., 2019, doi:10.1093/gigascience/giz100) v3.13.1 using the `--ss-fr` option. In addition, the Oyster River Protocol ([MacManes, 2018](https://peerj.com/articles/5428/); [readthedocs](https://oyster-river-protocol.readthedocs.io/en/latest/)) was utilized to compare assemblers.
-Assembly quality was controlled with BUSCO v5.4.5 (Manni et al., 2021, doi: 10.1002/cpz1.323) using the Actinopterygii database (`actinopterygii_odb10`).
+Assembly quality was controlled with BUSCO v5.4.5 (Manni et al., 2021, doi: 10.1002/cpz1.323), which uses hmmsearch: 3.3 and metaeuk: 6.a5d39d9, using the Actinopterygii database (`actinopterygii_odb10`).
 
 ```{bash}
 cd ~/S12139/S12139_1/02_assembly
 rnaspades.py -t 6 -1 ../01_fastq/RNA_S12139Nr1.1.fastq.gz -2 ../01_fastq/RNA_S12139Nr1.2.fastq.gz --ss-fr -o Pkn_rnaspades_ssfr
+## NOPE! It should have been RF! Correct everything later on!
+rnaspades.py -t 6 -1 ../01_fastq/RNA_S12139Nr1.1.fastq.gz -2 ../01_fastq/RNA_S12139Nr1.2.fastq.gz --ss-rf -o Pkn_rnaspades_ssrf
+
 busco -i ../02_assembly/Pkn_rnaspades_ssfr/transcripts.fasta -l ./actinopterygii_odb10/ -o Pkn_rnaspades_busco -m transcriptome --offline
 ```
+
+```{bash}
+cd ~/S12139/S12139_1/
+mkdir 07_oyster; sudo chmod 777 07_oyster #otherwise oyster cannot write there; if it uses its own dir, uses up the space
+docker run -it --mount type=bind,source=/media/main/sandbox/drozdovapb/S12139,target=/home/orp/docker macmaneslab/orp:2.3.3 bash
+
+
+$HOME/Oyster_River_Protocol/oyster.mk TPM_FILT=1 STRAND=RF MEM=48 CPU=10 \
+READ1=docker/S12139_1/01_fastq/RNA_S12139Nr1.1.fastq.gz READ2=docker/S12139_1/01_fastq/RNA_S12139Nr1.2.fastq.gz \
+RUNOUT=Pnk_oyster DIR=docker/S12139_1/07_oyster
+# this works fine but freezes at BUSCO, so ran BUSCO the same way for all assemblies:
+cd ./03_check
+busco -i ../02_assembly/Pnk_oyster.ORP.fasta -l ./actinopterygii_odb10/ -o Pkn_orp_busco -m transcriptome --offline -t 6
+# and so on
+```
+
+## Alignment
+
+`exonerate`
+
 
 All analyses except indicated otherwise were performed using a small computing cluster (64 Gb RAM, 6 physical cores, 12 virtual cores).
 
@@ -36,6 +59,8 @@ All analyses except indicated otherwise were performed using a small computing c
 51M paired reads (10G bases) were obtained. Quality control with FastQC showed good quality (Q>28) and absense of remaining sequence adapters.
 
 ## Assembly QC
+
+### Gene space completeness
 
 The rnaSPAdes assembly had the following BUSCO score:
 ```{}
@@ -51,11 +76,44 @@ The rnaSPAdes assembly had the following BUSCO score:
         |3640   Total BUSCO groups searched               |
         --------------------------------------------------
 ```
-It is not close to the desired 100 % but comparable with other fish transcriptome assemblies (e.g., [Zhou et al., 2020](https://doi.org/10.1038/s41597-020-0361-6) or [Kokkonen et al., 2024](https://doi.org/10.1111/eva.13735)) and is suitable for the planned downstream applications, primer design and as a database for MS-MS proteome analysis.
+It is not close to the ideally desired 100 % but comparable with other fish transcriptome assemblies (e.g., [Zhou et al., 2020](https://doi.org/10.1038/s41597-020-0361-6) or [Kokkonen et al., 2024](https://doi.org/10.1111/eva.13735)) and is suitable for the planned downstream applications, primer design and as a database for MS-MS proteome analysis.
 
-## Biological assembly QC
+Can we do better? Tried Oyster River protocol:
+
+```
+# Summarized benchmarking in BUSCO notation for file ~/S12139/S12139_1/02_assembly/Pnk_oyster.ORP.fasta
+
+# BUSCO was run in mode: euk_tran
+	***** Results: *****
+	C:74.2%[S:52.2%,D:22.0%],F:6.7%,M:19.1%,n:3640	   
+	2700	Complete BUSCOs (C)			   
+	1900	Complete and single-copy BUSCOs (S)	   
+	800	Complete and duplicated BUSCOs (D)	   
+	243	Fragmented BUSCOs (F)			   
+	697	Missing BUSCOs (M)			   
+	3640	Total BUSCO groups searched		   
+```
+
+It is worse (less complete). Okay, checked individual assemblies within this pipeline:
+
+```
+Pnk_oyster.spades55.fasta:                             C:75.5%[S:63.3%,D:12.2%],F:6.3%,M:18.2%,n:3640
+Pnk_oyster.spades75.fasta:                             C:67.0%[S:56.9%,D:10.1%],F:9.0%,M:24.0%,n:3640
+Pnk_oyster.transabyss.fasta:                           C:77.6%[S:63.9%,D:13.7%],F:5.7%,M:16.7%,n:3640	   
+Pnk_oyster.trinity.Trinity.fasta:                      C:79.2%[S:42.6%,D:36.6%],F:4.8%,M:16.0%,n:3640	   
+#checked the rnaSPAdes assembly in case I used another version of BUSCO or whatever:
+../02_assembly/Pkn_rnaspades_ssfr/transcripts.fasta:   C:80.5%[S:64.2%,D:16.3%],F:5.0%,M:14.5%,n:3640
+```
+It seems that the first (rnaSPAdes) assembly was the best, so let's proceed with it.
 
 ### Is it the right species?
+
+Downloaded `MW732164` (the reference mitochondrial genome sequence for this species).
+
+```
+cd ~/S12139/S12139_1/03_checks/
+exonerate --query Pkn_ref_mt.fa --target ../S12139_1/02_assembly/Pkn_rnaspades_ssfr/transcripts.fasta --bestn 10 >>mt_in_Pkn.exonerate.out
+```
 
 ## Annotation
 
