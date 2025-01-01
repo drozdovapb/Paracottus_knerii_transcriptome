@@ -57,25 +57,21 @@ Then, the assembly was filtered in muliple steps in order to only retain the mos
   $apps/TransDecoder-TransDecoder-v5.7.0/TransDecoder.Predict -t Pkn_rnaspades_ssrf.fasta --single_best_only
   ```
   Then the result was submitted to eggnog-mapper v2.1.12 [http://eggnog-mapper.embl.de].
-- FCS in Galaxy was used to filter out contamination.
-- Then, the sequences were filtered so that they contained FCS-GX taxonomy filtered AND (Chordata according to TRAPID OR Chordata according to eggnog-mapper). 
-- `seqkit replace -p "(.*)" -r '{kv}' --kv-file annotated_transcripts.tsv Pkn_rnaspades_ssrf_FCS_GX_cleaned.fasta >Pkn_rnaspades_ssrf_FCS_GX_cleaned_annotation.fasta`
--  `seqkit grep -f transcripts_for_TSA_submission_names.txt Pkn_rnaspades_ssrf_FCS_GX_cleaned.fasta -o Pkn_rnaspades_ssrf_FCS_GX_cleaned_Chordata.fasta`
--  `seqkit replace -p "(.*)" -r '{kv}' --kv-file annotated_transcripts.tsv Pkn_rnaspades_ssrf_FCS_GX_cleaned_Chordata.fasta >Pkn_rnaspades_ssrf_FCS_GX_cleaned_Chordata_annotation.fasta`
-- `gzip -c Pkn_rnaspades_ssrf_FCS_GX_cleaned_Chordata_annotation.fasta >Pkn_rnaspades_ssrf_FCS_GX_cleaned_Chordata_annotation.fasta.gzip`
--  `grep -c \> Pkn_rnaspades_ssrf_FCS_GX_cleaned_Chordata_annotation.fasta` check
-
-
-- oops
-
-File: pkn_rnaspades_ssrf_fcs_gx_cleaned_chordata_annotation.fasta, Code(VECTOR_MATCH), Sequence-id: NODE_10572_len_2355_cov_20_-_Kelch, Interval: 1..22, This sequence has a Moderate match on the following UniVec vector: gnl|uv|NGB04003.1:1-33 Illumina TruSeq UD/CD Adapter Trimming Read 1 
-
-File: pkn_rnaspades_ssrf_fcs_gx_cleaned2_chordata_annotation.fasta, Code(VECTOR_MATCH), Sequence-id: NODE_10133_len_2412_cov_20_-_Kelch, Interval: 1..22, This sequence has a Moderate match on the following UniVec vector: gnl|uv|NGB04003.1:1-33 Illumina TruSeq UD/CD Adapter Trimming Read 1 
-
-okay
-`echo "NODE_10572_len_2355_cov_20_-_Kelch repeat-containi" >seq2remove.txt`
-`echo "NODE_10133_len_2412_cov_20_-_Kelch repeat-containi" >> seq2remove.txt`
-`seqkit grep -n -f seq2remove.txt -v Pkn_rnaspades_ssrf_FCS_GX_cleaned_Chordata_annotation.fasta > Pkn_rnaspades_ssrf_FCS_GX_cleaned2_Chordata_annotation.fasta`
+- FCS in Galaxy [usegalaxy.org] was used to filter out contamination.
+- Then, the sequences were filtered so that they contained FCS-GX taxonomy filtered AND (Chordata according to TRAPID OR Chordata according to eggnog-mapper). The lists were prepared with R (see `add_annotation_to_names.R`). Filtering was done with `seqkit`:
+  ```
+  seqkit grep -f transcripts_for_TSA_submission_names.txt Pkn_rnaspades_ssrf_FCS_GX_cleaned.fasta -o Pkn_rnaspades_ssrf_FCS_GX_cleaned_Chordata.fasta
+  ```
+- Then, annotation was added to the names with `seqkit` as well (also see `add_annotation_to_names.R`):
+  ```
+  seqkit replace -p "(.*)" -r '{kv}' --kv-file annotated_transcripts.tsv Pkn_rnaspades_ssrf_FCS_GX_cleaned_Chordata.fasta >Pkn_rnaspades_ssrf_FCS_GX_cleaned_Chordata_annotation.fasta
+  ```
+- The remaining sequences matching `gnl|uv|NGB04003.1:1-33 Illumina TruSeq UD/CD Adapter Trimming Read 1` were removed from the file
+  ```
+  echo "NODE_10572_len_2355_cov_20_-_Kelch repeat-containi" >seq2remove.txt
+  echo "NODE_10133_len_2412_cov_20_-_Kelch repeat-containi" >> seq2remove.txt
+  seqkit grep -n -f seq2remove.txt -v Pkn_rnaspades_ssrf_FCS_GX_cleaned_Chordata_annotation.fasta > Pkn_rnaspades_ssrf_FCS_GX_cleaned2_Chordata_annotation.fasta
+  ```
 
 
 
@@ -135,7 +131,7 @@ Pnk_oyster.spades55.fasta:                             C:75.5%[S:63.3%,D:12.2%],
 Pnk_oyster.spades75.fasta:                             C:67.0%[S:56.9%,D:10.1%],F:9.0%,M:24.0%,n:3640
 Pnk_oyster.transabyss.fasta:                           C:77.6%[S:63.9%,D:13.7%],F:5.7%,M:16.7%,n:3640	   
 Pnk_oyster.trinity.Trinity.fasta:                      C:79.2%[S:42.6%,D:36.6%],F:4.8%,M:16.0%,n:3640	   
-#checked the rnaSPAdes assembly in case I used another version of BUSCO or whatever:
+#checked the rnaSPAdes assembly in case I accidentally used another version of BUSCO or whatever:
 ../02_assembly/Pkn_rnaspades_ssfr/transcripts.fasta:   C:80.5%[S:64.2%,D:16.3%],F:5.0%,M:14.5%,n:3640
 ```
 It seems that the first (rnaSPAdes) assembly was the best, so let's proceed with it.
@@ -159,12 +155,15 @@ Ideally, it is done before submission. Otherwise, NCBI runs it upon submission a
 
 It is available as a standalone tool: [https://github.com/ncbi/fcs?tab=readme-ov-file]. However, I couldn't get it to work.
 Fortunately, it is available in Galaxy as well, and there's a tutorial [https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/ncbi-fcs/tutorial.html].
-The first part (NCBI FCS Adaptor) never worked for my file (even though it worked for the example one from the tutorial and for first 10 sequences from my file, but it failed already on the first 20 sequences). The second part ran perfectly.
+The first part (NCBI FCS Adaptor) never worked for my file (even though it worked for the example one from the tutorial and for first 10 sequences from my file, but it failed already on the first 20 sequences). The second part ran perfectly. Upd: adaptor contamination check returned two sequences, so I filtered them out by name.
 
 ### Taxonomic composition
 
-TRAPID (web service)
-A lot of interesting information. Most importantly for us now, 46,033 transcripts were classified as coming from Chordata, i.e., most probably from our object.
+Used TRAPID, a web service located at [http://bioinformatics.psb.ugent.be/trapid_02/]. By the way, it's a great tool!
+
+Retrieved a lot of interesting information. Most importantly for us now, 46,033 transcripts were classified as coming from Chordata, i.e., most probably from our object.
+
+### *todo: TRAPID figures here*
 
 ### Functional annotation
 
