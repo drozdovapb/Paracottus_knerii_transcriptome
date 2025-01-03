@@ -147,6 +147,13 @@ exonerate --query Pkn_ref_mt.fa --target ../S12139_1/02_assembly/Pkn_rnaspades_s
 
 ## Annotation
 
+It's a whole world within this fish fry! Bacteria, Archaea, Ciliates, flatworms, viruses _etc_. 
+
+![possible contaminants](contaminants.png)
+
+Fortunately, about 50 % were identified as Chordata (mostly fish and some clearly mislabeled groups of other Chordata).
+![fishes](fishes.png)
+
 ### Mandatory contamination checks
 
 NCBI requires checks for contamination with FCS-GX [https://submit.ncbi.nlm.nih.gov/about/tsa/#step1].
