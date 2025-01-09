@@ -39,7 +39,7 @@ READ1=docker/S12139_1/01_fastq/RNA_S12139Nr1.1.fastq.gz READ2=docker/S12139_1/01
 RUNOUT=Pnk_oyster DIR=docker/S12139_1/07_oyster
 # this works fine but freezes at BUSCO, so ran BUSCO the same way for all assemblies:
 cd ./03_check
-busco -i ../02_assembly/Pnk_oyster.ORP.fasta -l ./actinopterygii_odb10/ -o Pkn_orp_busco -m transcriptome --offline -t 6
+busco -i ../02_assembly/Pnk_oyster.ORP.fasta -l ./actinopterygii_odb10/ -o Pkn_orp_busco -m transcriptome --offline -c 6
 # and so on
 ```
 
@@ -49,7 +49,7 @@ Then, the assembly was filtered in muliple steps in order to only retain the mos
 
 - First, kentUtils [https://github.com/ENCODE-DCC/kentUtils] was used to filter by length (>199 bp) and Ns (<9N):
   `$apps/kentUtils/faFilter -minSize=200 -maxN=8 Pkn_rnaspades_ssrf.fasta ../06_annotation/Pkn_rnaspades_ssrf_filtlength.fasta`
-  NCBI actually requires >200 nt and maxN=14 but I nedded to be more strict to pass  the TRAPID filters (see below).
+  NCBI actually requires >200 nt and maxN=14 but I needed to be more strict to pass  the TRAPID filters (see below).
 - The resulting file passed the TRAPID threshold and was processed with TRAPID [http://bioinformatics.psb.ugent.be/trapid_02/trapid/].
 - Protein prediction:
   ```
