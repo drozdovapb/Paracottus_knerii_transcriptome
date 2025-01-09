@@ -73,7 +73,7 @@ Then, the assembly was filtered in muliple steps in order to only retain the mos
   seqkit grep -n -f seq2remove.txt -v Pkn_rnaspades_ssrf_FCS_GX_cleaned_Chordata_annotation.fasta > Pkn_rnaspades_ssrf_FCS_GX_cleaned2_Chordata_annotation.fasta
   ```
 
-
+The assembly was submitted to NCBI TSA database under accession GLBE00000000.
 
 ## Alignment
 
