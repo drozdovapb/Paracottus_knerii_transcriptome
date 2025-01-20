@@ -1,0 +1,52 @@
+Command line: [exonerate --query Paracottus_knerii_transcriptome/04_immune_genes/refs_rainbow_trout/Tgfb.txt --target GLBE01.1.fsa_nt --bestn 3]
+Hostname: [drozdovapb-HP-17-by1xxx]
+
+C4 Alignment:
+------------
+         Query: lcl|KF870473.1_cds_AHH92866.1_1 [gene=TGF-beta1c] [protein=transforming growth factor beta 1 isoform c] [protein_id=AHH92866.1] [location=join(1049..1388,4597..4866,5120..5197,5310..5457,5904..5964)] [gbkey=CDS]
+        Target: GLBE01034920.1 TSA: Paracottus knerii isolate Pkn_Angara24 NODE_57097_len_384_cov_4_TGFB2_Transforming, transcribed RNA sequence
+         Model: ungapped:dna2dna
+     Raw score: 277
+   Query range: 67 -> 171
+  Target range: 141 -> 245
+
+  68 : TGTCCACCTGTAAGTCACTGGACTTGGAGCTGGTGAAGAGGAAACGTATTGAGGCCATCCGTGG : 131
+       ||||||| || |   | |||||| |||| | | | |||| ||| || || ||||||||||| ||
+ 142 : TGTCCACGTGCAGCACGCTGGACATGGACCAGTTCAAGAAGAAGCGCATCGAGGCCATCCGAGG : 205
+
+ 132 : ACAGATACTGAGCAAGCTGCGGCTGCCCAAGGAGCCAGAG : 171
+        ||||| ||||||||||||  |||  ||||    || |||
+ 206 : GCAGATCCTGAGCAAGCTGAAGCTCACCAATCCCCCGGAG : 245
+
+vulgar: lcl|KF870473.1_cds_AHH92866.1_1 67 171 + GLBE01034920.1 141 245 + 277 M 104 104
+
+C4 Alignment:
+------------
+         Query: lcl|KF870473.1_cds_AHH92866.1_1 [gene=TGF-beta1c] [protein=transforming growth factor beta 1 isoform c] [protein_id=AHH92866.1] [location=join(1049..1388,4597..4866,5120..5197,5310..5457,5904..5964)] [gbkey=CDS]
+        Target: GLBE01008245.1 TSA: Paracottus knerii isolate Pkn_Angara24 NODE_9617_len_2477_cov_52_TGFB3_Transforming, transcribed RNA sequence
+         Model: ungapped:dna2dna
+     Raw score: 179
+   Query range: 558 -> 601
+  Target range: 976 -> 1019
+
+  559 : TGGGTCTCCTTTGATGTTACACAGACTCTGAGGGAGTGGCTGA :  601
+        ||||||||||||||||||||| ||||  |||| ||||||||||
+  977 : TGGGTCTCCTTTGATGTTACAGAGACCGTGAGAGAGTGGCTGA : 1019
+
+vulgar: lcl|KF870473.1_cds_AHH92866.1_1 558 601 + GLBE01008245.1 976 1019 + 179 M 43 43
+
+C4 Alignment:
+------------
+         Query: lcl|KF870473.1_cds_AHH92866.1_1 [gene=TGF-beta1c] [protein=transforming growth factor beta 1 isoform c] [protein_id=AHH92866.1] [location=join(1049..1388,4597..4866,5120..5197,5310..5457,5904..5964)] [gbkey=CDS]
+        Target: GLBE01004915.1 TSA: Paracottus knerii isolate Pkn_Angara24 NODE_5774_len_3121_cov_48_TGFB1_Transforming, transcribed RNA sequence
+         Model: ungapped:dna2dna
+     Raw score: 149
+   Query range: 288 -> 334
+  Target range: 1169 -> 1215
+
+  289 : GAAGAGGAGGCATACTTTGCAAAGGAGGTCCACAAGTTCAACATGA :  334
+        || |||||||  ||||| || |||| | | |||||||||||||| |
+ 1170 : GAGGAGGAGGAGTACTTCGCCAAGGTGCTGCACAAGTTCAACATAA : 1215
+
+vulgar: lcl|KF870473.1_cds_AHH92866.1_1 288 334 + GLBE01004915.1 1169 1215 + 149 M 46 46
+-- completed exonerate analysis

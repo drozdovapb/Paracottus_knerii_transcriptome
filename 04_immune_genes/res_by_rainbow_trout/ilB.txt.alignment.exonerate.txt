@@ -1,0 +1,131 @@
+Command line: [exonerate --query Paracottus_knerii_transcriptome/04_immune_genes/refs_rainbow_trout/ilB.txt --target GLBE01.1.fsa_nt --bestn 3]
+Hostname: [drozdovapb-HP-17-by1xxx]
+
+C4 Alignment:
+------------
+         Query: lcl|AJ223954.1_cds_CAA11684.1_1 [db_xref=GOA:Q9YGD3,InterPro:IPR000975,InterPro:IPR003294,InterPro:IPR003296,InterPro:IPR008996,PDB:1OOX,UniProtKB/Swiss-Prot:Q9YGD3] [protein=interleukin-1-beta] [protein_id=CAA11684.1] [location=98..880] [gbkey=CDS]
+        Target: GLBE01020777.1 TSA: Paracottus knerii isolate Pkn_Angara24 NODE_25640_len_1152_cov_11_IL1B_Interleukin, transcribed RNA sequence
+         Model: ungapped:dna2dna
+     Raw score: 342
+   Query range: 581 -> 707
+  Target range: 542 -> 668
+
+ 582 : CATCAGCCAGCAGAGCGACATGGTGCGTTTCCTTTTCTACAGACGGAACACCGGGGTTGACATC : 645
+       |||||||  | | |||||||||||| | ||||| |||||||||| | ||||||||||  |||||
+ 543 : CATCAGCTTGGACAGCGACATGGTGAGATTCCTCTTCTACAGACAGGACACCGGGGTGAACATC : 606
+
+ 646 : AGTACCCTGGAGTCTGCCAGTTTCAGGAACTGGTTCATCAGCACGGACATGCAGCAGGACTA : 707
+       || |||||   ||| | |   | |  |  ||||| |||||||||||| |||||  |  || |
+ 607 : AGCACCCTCATGTCCGTCGCCTACCCGGGCTGGTACATCAGCACGGAAATGCACAACAACAA : 668
+
+vulgar: lcl|AJ223954.1_cds_CAA11684.1_1 581 707 + GLBE01020777.1 542 668 + 342 M 126 126
+
+C4 Alignment:
+------------
+         Query: lcl|AJ223954.1_cds_CAA11684.1_1 [db_xref=GOA:Q9YGD3,InterPro:IPR000975,InterPro:IPR003294,InterPro:IPR003296,InterPro:IPR008996,PDB:1OOX,UniProtKB/Swiss-Prot:Q9YGD3] [protein=interleukin-1-beta] [protein_id=CAA11684.1] [location=98..880] [gbkey=CDS]
+        Target: GLBE01031855.1 TSA: Paracottus knerii isolate Pkn_Angara24 NODE_47451_len_483_cov_13_IL1B_Interleukin, transcribed RNA sequence
+         Model: ungapped:dna2dna
+     Raw score: 199
+   Query range: 174 -> 266
+  Target range: 241 -> 333
+
+ 175 : ATGGGAACCGAGTTCAAGGACAAGGACCTGCTCAACTTCTTGCTGGAGAGTGCTGTGGAAGAAC : 238
+       ||  | ||||| ||||  ||| ||||||||||||||    | ||||| ||    ||||||||  
+ 242 : ATAAGCACCGAATTCAGAGACGAGGACCTGCTCAACAAGATACTGGACAGCTTCGTGGAAGAGG : 305
+
+ 239 : ATATAGTGTTGGAGTTGGAGTCGGCACC : 266
+       | || ||||| |||   |  || || ||
+ 306 : AAATTGTGTTAGAGCGTGGTTCAGCTCC : 333
+
+vulgar: lcl|AJ223954.1_cds_CAA11684.1_1 174 266 + GLBE01031855.1 241 333 + 199 M 92 92
+
+C4 Alignment:
+------------
+         Query: lcl|AJ223954.1_cds_CAA11684.1_1 [db_xref=GOA:Q9YGD3,InterPro:IPR000975,InterPro:IPR003294,InterPro:IPR003296,InterPro:IPR008996,PDB:1OOX,UniProtKB/Swiss-Prot:Q9YGD3] [protein=interleukin-1-beta] [protein_id=CAA11684.1] [location=98..880] [gbkey=CDS]
+        Target: GLBE01017349.1 TSA: Paracottus knerii isolate Pkn_Angara24 NODE_20893_len_1433_cov_418_MYH1_microtubule, transcribed RNA sequence
+         Model: ungapped:dna2dna
+     Raw score: 122
+   Query range: 116 -> 162
+  Target range: 1184 -> 1230
+
+  117 : TCACATTGCCAACCTCATCATCGCCATGGAGAGGTTAAAGGGTGGC :  162
+        ||| | | |||||||||||| | ||| | ||| |||  ||| || |
+ 1185 : TCAGAATACCAACCTCATCAACACCAAGAAGAAGTTGGAGGCTGAC : 1230
+
+vulgar: lcl|AJ223954.1_cds_CAA11684.1_1 116 162 + GLBE01017349.1 1184 1230 + 122 M 46 46
+
+C4 Alignment:
+------------
+         Query: lcl|AJ223954.1_cds_CAA11684.1_1 [db_xref=GOA:Q9YGD3,InterPro:IPR000975,InterPro:IPR003294,InterPro:IPR003296,InterPro:IPR008996,PDB:1OOX,UniProtKB/Swiss-Prot:Q9YGD3] [protein=interleukin-1-beta] [protein_id=CAA11684.1] [location=98..880] [gbkey=CDS]
+        Target: GLBE01017335.1 TSA: Paracottus knerii isolate Pkn_Angara24 NODE_20873_len_1434_cov_469_MYH1_microtubule, transcribed RNA sequence
+         Model: ungapped:dna2dna
+     Raw score: 122
+   Query range: 116 -> 162
+  Target range: 1185 -> 1231
+
+  117 : TCACATTGCCAACCTCATCATCGCCATGGAGAGGTTAAAGGGTGGC :  162
+        ||| | | |||||||||||| | ||| | ||| |||  ||| || |
+ 1186 : TCAGAATACCAACCTCATCAACACCAAGAAGAAGTTGGAGGCTGAC : 1231
+
+vulgar: lcl|AJ223954.1_cds_CAA11684.1_1 116 162 + GLBE01017335.1 1185 1231 + 122 M 46 46
+
+C4 Alignment:
+------------
+         Query: lcl|AJ223954.1_cds_CAA11684.1_1 [db_xref=GOA:Q9YGD3,InterPro:IPR000975,InterPro:IPR003294,InterPro:IPR003296,InterPro:IPR008996,PDB:1OOX,UniProtKB/Swiss-Prot:Q9YGD3] [protein=interleukin-1-beta] [protein_id=CAA11684.1] [location=98..880] [gbkey=CDS]
+        Target: GLBE01017334.1 TSA: Paracottus knerii isolate Pkn_Angara24 NODE_20872_len_1434_cov_476_MYH13_Myosin, transcribed RNA sequence
+         Model: ungapped:dna2dna
+     Raw score: 122
+   Query range: 116 -> 162
+  Target range: 1185 -> 1231
+
+  117 : TCACATTGCCAACCTCATCATCGCCATGGAGAGGTTAAAGGGTGGC :  162
+        ||| | | |||||||||||| | ||| | ||| |||  ||| || |
+ 1186 : TCAGAATACCAACCTCATCAACACCAAGAAGAAGTTGGAGGCTGAC : 1231
+
+vulgar: lcl|AJ223954.1_cds_CAA11684.1_1 116 162 + GLBE01017334.1 1185 1231 + 122 M 46 46
+
+C4 Alignment:
+------------
+         Query: lcl|AJ223954.1_cds_CAA11684.1_1 [db_xref=GOA:Q9YGD3,InterPro:IPR000975,InterPro:IPR003294,InterPro:IPR003296,InterPro:IPR008996,PDB:1OOX,UniProtKB/Swiss-Prot:Q9YGD3] [protein=interleukin-1-beta] [protein_id=CAA11684.1] [location=98..880] [gbkey=CDS]
+        Target: GLBE01019944.1 TSA: Paracottus knerii isolate Pkn_Angara24 NODE_24418_len_1220_cov_512_MYH1_microtubule, transcribed RNA sequence
+         Model: ungapped:dna2dna
+     Raw score: 122
+   Query range: 116 -> 162
+  Target range: 437 -> 483
+
+ 117 : TCACATTGCCAACCTCATCATCGCCATGGAGAGGTTAAAGGGTGGC : 162
+       ||| | | |||||||||||| | ||| | ||| |||  ||| || |
+ 438 : TCAGAATACCAACCTCATCAACACCAAGAAGAAGTTGGAGGCTGAC : 483
+
+vulgar: lcl|AJ223954.1_cds_CAA11684.1_1 116 162 + GLBE01019944.1 437 483 + 122 M 46 46
+
+C4 Alignment:
+------------
+         Query: lcl|AJ223954.1_cds_CAA11684.1_1 [db_xref=GOA:Q9YGD3,InterPro:IPR000975,InterPro:IPR003294,InterPro:IPR003296,InterPro:IPR008996,PDB:1OOX,UniProtKB/Swiss-Prot:Q9YGD3] [protein=interleukin-1-beta] [protein_id=CAA11684.1] [location=98..880] [gbkey=CDS]
+        Target: GLBE01019945.1 TSA: Paracottus knerii isolate Pkn_Angara24 NODE_24419_len_1220_cov_507_MYH1_microtubule, transcribed RNA sequence
+         Model: ungapped:dna2dna
+     Raw score: 122
+   Query range: 116 -> 162
+  Target range: 437 -> 483
+
+ 117 : TCACATTGCCAACCTCATCATCGCCATGGAGAGGTTAAAGGGTGGC : 162
+       ||| | | |||||||||||| | ||| | ||| |||  ||| || |
+ 438 : TCAGAATACCAACCTCATCAACACCAAGAAGAAGTTGGAGGCTGAC : 483
+
+vulgar: lcl|AJ223954.1_cds_CAA11684.1_1 116 162 + GLBE01019945.1 437 483 + 122 M 46 46
+
+C4 Alignment:
+------------
+         Query: lcl|AJ223954.1_cds_CAA11684.1_1 [db_xref=GOA:Q9YGD3,InterPro:IPR000975,InterPro:IPR003294,InterPro:IPR003296,InterPro:IPR008996,PDB:1OOX,UniProtKB/Swiss-Prot:Q9YGD3] [protein=interleukin-1-beta] [protein_id=CAA11684.1] [location=98..880] [gbkey=CDS]
+        Target: GLBE01023001.1 TSA: Paracottus knerii isolate Pkn_Angara24 NODE_28998_len_986_cov_465_MYH1_microtubule, transcribed RNA sequence
+         Model: ungapped:dna2dna
+     Raw score: 122
+   Query range: 116 -> 162
+  Target range: 437 -> 483
+
+ 117 : TCACATTGCCAACCTCATCATCGCCATGGAGAGGTTAAAGGGTGGC : 162
+       ||| | | |||||||||||| | ||| | ||| |||  ||| || |
+ 438 : TCAGAATACCAACCTCATCAACACCAAGAAGAAGTTGGAGGCTGAC : 483
+
+vulgar: lcl|AJ223954.1_cds_CAA11684.1_1 116 162 + GLBE01023001.1 437 483 + 122 M 46 46
+-- completed exonerate analysis

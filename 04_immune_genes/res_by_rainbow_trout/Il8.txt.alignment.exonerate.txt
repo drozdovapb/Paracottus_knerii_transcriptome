@@ -1,0 +1,83 @@
+Command line: [exonerate --query Paracottus_knerii_transcriptome/04_immune_genes/refs_rainbow_trout/Il8.txt --target GLBE01.1.fsa_nt --bestn 3]
+Hostname: [drozdovapb-HP-17-by1xxx]
+
+C4 Alignment:
+------------
+         Query: lcl|AY160982.1_cds_AAO25641.1_1 [gene=IL-8] [protein=interleukin-8] [protein_id=AAO25641.1] [location=join(48..111,451..583,831..917,1210..1219)] [gbkey=CDS]
+        Target: GLBE01025656.1 TSA: Paracottus knerii isolate Pkn_Angara24 NODE_33462_len_800_cov_15_CXCL6_Intercrine, transcribed RNA sequence
+         Model: ungapped:dna2dna
+     Raw score: 509
+   Query range: 0 -> 208
+  Target range: 152 -> 360
+
+   1 : ATGAGCATCAGAATGTCAGCCAGCCTTGTCGTTGTGCTCCTGGCCCTCCTGACCATTACTGAGG :  64
+       ||||||| |||| |    |||  |    | || |||||||||||| ||||| ||   | ||| |
+ 153 : ATGAGCAGCAGAGTCCTCGCCGCCTCCATTGTGGTGCTCCTGGCCTTCCTGGCCGCCAGTGAAG : 216
+
+  65 : GGATGAGTCTGAGAGGCATGGGGGCTGACCTGCGATGTCGCTGCATTGAGACGGAAAGCAGACG : 128
+       |||||||||||||| || |||| |  || ||||  || ||||||||    || || ||||||  
+ 217 : GGATGAGTCTGAGAAGCCTGGGAGTGGAGCTGCACTGCCGCTGCATCAGTACCGAGAGCAGAAA : 280
+
+ 129 : AATTGGTAAACTCATTAAGAAGGTGGAGATGTTCCCTCCCAGCTCGCACTGCAGAGACACTGAG : 192
+        ||  |  | | ||| |||| ||||||| || | ||| ||| ||| ||||||  |||  | || 
+ 281 : CATCCGCTACCACATCAAGACGGTGGAGCTGATTCCTGCCAACTCCCACTGCGAAGAGGCCGAA : 344
+
+ 193 : ATCATTGCCACTCTGA : 208
+       ||||||||||||||||
+ 345 : ATCATTGCCACTCTGA : 360
+
+vulgar: lcl|AY160982.1_cds_AAO25641.1_1 0 208 + GLBE01025656.1 152 360 + 509 M 208 208
+
+C4 Alignment:
+------------
+         Query: lcl|AY160982.1_cds_AAO25641.1_1 [gene=IL-8] [protein=interleukin-8] [protein_id=AAO25641.1] [location=join(48..111,451..583,831..917,1210..1219)] [gbkey=CDS]
+        Target: GLBE01005836.1 TSA: Paracottus knerii isolate Pkn_Angara24 NODE_6824_len_2915_cov_34_DGAT2_Diacylglycerol, transcribed RNA sequence:[revcomp]
+         Model: ungapped:dna2dna
+     Raw score: 121
+   Query range: 147 -> 191
+  Target range: 1059 -> 1015
+
+  148 : AAGGTGGAGATGTTCCCTCCCAGCTCGCACTGCAGAGACACTGA :  191
+        | ||||  |||||||   ||| |  |||||||||||||| | ||
+ 1059 : AGGGTGACGATGTTCATGCCCGGGGCGCACTGCAGAGACTCCGA : 1016
+
+vulgar: lcl|AY160982.1_cds_AAO25641.1_1 147 191 + GLBE01005836.1 1059 1015 - 121 M 44 44
+
+C4 Alignment:
+------------
+         Query: lcl|AY160982.1_cds_AAO25641.1_1 [gene=IL-8] [protein=interleukin-8] [protein_id=AAO25641.1] [location=join(48..111,451..583,831..917,1210..1219)] [gbkey=CDS]
+        Target: GLBE01001450.1 TSA: Paracottus knerii isolate Pkn_Angara24 NODE_1727_len_4614_cov_39_prom2_Prominin, transcribed RNA sequence:[revcomp]
+         Model: ungapped:dna2dna
+     Raw score: 118
+   Query range: 150 -> 215
+  Target range: 1749 -> 1684
+
+  151 : GTGGAGATGTTCCCTCCCAGCTCGCACTGCAGAGACACTGAGATCATTGCCACTCTGAGCAA :  212
+        ||| | | |||||||||||||  | || ||||   ||| |  |||||   ||  |     ||
+ 1749 : GTGTAAACGTTCCCTCCCAGCAGGAACAGCAGCAGCACAGCTATCATGAACAGCCATGAGAA : 1688
+
+  213 : GAG :  215
+        |||
+ 1687 : GAG : 1685
+
+vulgar: lcl|AY160982.1_cds_AAO25641.1_1 150 215 + GLBE01001450.1 1749 1684 - 118 M 65 65
+
+C4 Alignment:
+------------
+         Query: lcl|AY160982.1_cds_AAO25641.1_1 [gene=IL-8] [protein=interleukin-8] [protein_id=AAO25641.1] [location=join(48..111,451..583,831..917,1210..1219)] [gbkey=CDS]
+        Target: GLBE01002561.1 TSA: Paracottus knerii isolate Pkn_Angara24 NODE_3044_len_3918_cov_46_prom2_Prominin, transcribed RNA sequence:[revcomp]
+         Model: ungapped:dna2dna
+     Raw score: 118
+   Query range: 150 -> 215
+  Target range: 1749 -> 1684
+
+  151 : GTGGAGATGTTCCCTCCCAGCTCGCACTGCAGAGACACTGAGATCATTGCCACTCTGAGCAA :  212
+        ||| | | |||||||||||||  | || ||||   ||| |  |||||   ||  |     ||
+ 1749 : GTGTAAACGTTCCCTCCCAGCAGGAACAGCAGCAGCACAGCTATCATGAACAGCCATGAGAA : 1688
+
+  213 : GAG :  215
+        |||
+ 1687 : GAG : 1685
+
+vulgar: lcl|AY160982.1_cds_AAO25641.1_1 150 215 + GLBE01002561.1 1749 1684 - 118 M 65 65
+-- completed exonerate analysis
