@@ -49,6 +49,7 @@ First, is it the right species?
 Downloaded `MW732164` (the reference mitochondrial genome sequence for this species).
 
 ```
+# if you are trying to reproduce the code, please unpack GLBE01.1.fsa_nt (gzipped to save space) 
 cd ./03_annotation/
 exonerate --query Pkn_ref_mt.fa --target ../02_assembly/GLBE01.1.fsa_nt --bestn 10 >>mt_in_Pkn.exonerate.out
 ```
@@ -63,6 +64,7 @@ Then, the assembly was filtered in muliple steps in order to only retain the mos
 - The resulting file passed the TRAPID threshold and was processed with TRAPID [http://bioinformatics.psb.ugent.be/trapid_02/trapid/].
 - Protein prediction:
   ```
+  # if you are trying to reproduce any code that refers to assemblies, please unpack (gunzip) the files (gzipped to save space) 
   $apps/TransDecoder-TransDecoder-v5.7.0/TransDecoder.LongOrfs -t Pkn_rnaspades_ssrf.fasta -m 50 -f 
   $apps/TransDecoder-TransDecoder-v5.7.0/TransDecoder.Predict -t Pkn_rnaspades_ssrf.fasta --single_best_only
   ```
@@ -179,9 +181,9 @@ Used TRAPID, a web service located at [http://bioinformatics.psb.ugent.be/trapid
 
 Retrieved a lot of interesting information. Most importantly for us now, 46,033 transcripts were classified as coming from Chordata, i.e., most probably from our object.
 
-It's a whole world within this fish fry! Bacteria, Archaea, Ciliates, flatworms, viruses _etc_. 
+![phylum_trapid](03_annotation/Phylum_composition_TRAPID.png)
 
-[phylum_trapid](03_annotation/Phylum_composition_TRAPID.png)
+It's a whole world within this fish fry! Bacteria, Archaea, Ciliates, flatworms, viruses _etc_. 
 
 ![possible contaminants](03_annotation/contaminants.png)
 
