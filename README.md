@@ -88,6 +88,8 @@ All analyses except indicated otherwise were performed using a small computing c
 
 51M paired reads (10G bases) were obtained. Quality control with FastQC showed good quality (Q>28) and absense of remaining sequence adapters.
 
+Full fastQC report for forwards reads can be found [here](https://html-preview.github.io/?url=https://github.com/drozdovapb/Paracottus_knerii_transcriptome/blob/main/01_raw_reads_QC/RNA_S12139Nr1.1_fastqc.html) and for reverse reads [here](https://html-preview.github.io/?url=https://github.com/drozdovapb/Paracottus_knerii_transcriptome/blob/main/01_raw_reads_QC/RNA_S12139Nr1.2_fastqc.html).
+
 ## Assembly QC
 
 ### Gene space completeness
