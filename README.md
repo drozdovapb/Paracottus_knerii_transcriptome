@@ -5,7 +5,7 @@ Reproducible code for the analysis of a *Paracottus knerii* ("stone sculpin" fro
 
 ### Raw data
 
-Total RNA was isolated from a dissected *Paracottus knerii* fry (30–60 days old) fixed in RNAlater with a MagMax kit (Thermo Fisher). After quality control (RNA concentration >100 ng/uL, RIN 7.6) 100 ng of RNA was processsed with a TruSeq Stranded mRNA library preparation kit (Illumina), and the library was sequenced with a NovaSeq 6000 device (2 x 101 bp). Q30 value of sequencing: 92.06 %. 
+Total RNA was isolated from a dissected *Paracottus knerii* fry (30–60 days old) fixed in RNAlater with a MagMax kit (Thermo Fisher). After quality control (RNA concentration >100 ng/uL, RIN 7.6) 100 ng of RNA was processed with a TruSeq Stranded mRNA library preparation kit (Illumina), and the library was sequenced with a NovaSeq 6000 device (2 x 101 bp). Q30 value of sequencing: 92.06 %. 
 Demultiplexing of the sequencing reads was performed with Illumina bcl2fastq (version 2.20). Adapters were trimmed with Skewer (version 0.2.2) (Jiang et al. 2014). Up to this point, the analysis was performed by the CeGaT company.
 
 Read quality was analyzed with FastQC v0.11.9 (https://github.com/s-andrews/FastQC) and was fairly good to proceed with assembly.
@@ -110,7 +110,7 @@ All analyses except indicated otherwise were performed using a small computing c
 
 ### Read QC
 
-51M paired reads (10G bases) were obtained. Quality control with FastQC showed good quality (Q>28) and absense of remaining sequence adapters.
+51M paired reads (10G bases) were obtained. Quality control with FastQC showed good quality (Q>28) and absence of remaining sequence adapters.
 
 Full fastQC report for forwards reads can be found [here](https://html-preview.github.io/?url=https://github.com/drozdovapb/Paracottus_knerii_transcriptome/blob/main/01_raw_reads_QC/RNA_S12139Nr1.1_fastqc.html) and for reverse reads [here](https://html-preview.github.io/?url=https://github.com/drozdovapb/Paracottus_knerii_transcriptome/blob/main/01_raw_reads_QC/RNA_S12139Nr1.2_fastqc.html).
 
