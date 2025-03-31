@@ -5,7 +5,7 @@ Reproducible code for the analysis of a *Paracottus knerii* ("stone sculpin" fro
 
 ### Raw data
 
-Total RNA was isolated from a dissected *Paracottus knerii* fry (30–60 days old) fixed in RNAlater with a MagMax kit (Thermo Fisher). After quality control (RNA concentration >100 ng/uL, RIN 7.6) 100 ng of RNA was processsed with a TruSeq Stranded mRNA library preparation kit (Illumina), and the library was sequenced with a NovaSeq 6000 device (2 x 101 bp). Q30 value of sequencing: 92.06 %. 
+Total RNA was isolated from a dissected *Paracottus knerii* fry (30–60 days old) fixed in RNAlater with a MagMax kit (Thermo Fisher). After quality control (RNA concentration >100 ng/uL, RIN 7.6) 100 ng of RNA was processed with a TruSeq Stranded mRNA library preparation kit (Illumina), and the library was sequenced with a NovaSeq 6000 device (2 x 101 bp). Q30 value of sequencing: 92.06 %. 
 Demultiplexing of the sequencing reads was performed with Illumina bcl2fastq (version 2.20). Adapters were trimmed with Skewer (version 0.2.2) (Jiang et al. 2014). Up to this point, the analysis was performed by the CeGaT company.
 
 Read quality was analyzed with FastQC v0.11.9 (https://github.com/s-andrews/FastQC) and was fairly good to proceed with assembly.
@@ -49,6 +49,7 @@ First, is it the right species?
 Downloaded `MW732164` (the reference mitochondrial genome sequence for this species).
 
 ```
+# if you are trying to reproduce the code, please unpack GLBE01.1.fsa_nt (gzipped to save space) 
 cd ./03_annotation/
 exonerate --query Pkn_ref_mt.fa --target ../02_assembly/GLBE01.1.fsa_nt --bestn 10 >>mt_in_Pkn.exonerate.out
 ```
@@ -63,6 +64,7 @@ Then, the assembly was filtered in muliple steps in order to only retain the mos
 - The resulting file passed the TRAPID threshold and was processed with TRAPID [http://bioinformatics.psb.ugent.be/trapid_02/trapid/].
 - Protein prediction:
   ```
+  # if you are trying to reproduce any code that refers to assemblies, please unpack (gunzip) the files (gzipped to save space) 
   $apps/TransDecoder-TransDecoder-v5.7.0/TransDecoder.LongOrfs -t Pkn_rnaspades_ssrf.fasta -m 50 -f 
   $apps/TransDecoder-TransDecoder-v5.7.0/TransDecoder.Predict -t Pkn_rnaspades_ssrf.fasta --single_best_only
   ```
@@ -108,7 +110,7 @@ All analyses except indicated otherwise were performed using a small computing c
 
 ### Read QC
 
-51M paired reads (10G bases) were obtained. Quality control with FastQC showed good quality (Q>28) and absense of remaining sequence adapters.
+51M paired reads (10G bases) were obtained. Quality control with FastQC showed good quality (Q>28) and absence of remaining sequence adapters.
 
 Full fastQC report for forwards reads can be found [here](https://html-preview.github.io/?url=https://github.com/drozdovapb/Paracottus_knerii_transcriptome/blob/main/01_raw_reads_QC/RNA_S12139Nr1.1_fastqc.html) and for reverse reads [here](https://html-preview.github.io/?url=https://github.com/drozdovapb/Paracottus_knerii_transcriptome/blob/main/01_raw_reads_QC/RNA_S12139Nr1.2_fastqc.html).
 
@@ -179,9 +181,9 @@ Used TRAPID, a web service located at [http://bioinformatics.psb.ugent.be/trapid
 
 Retrieved a lot of interesting information. Most importantly for us now, 46,033 transcripts were classified as coming from Chordata, i.e., most probably from our object.
 
-It's a whole world within this fish fry! Bacteria, Archaea, Ciliates, flatworms, viruses _etc_. 
+![phylum_trapid](03_annotation/Phylum_composition_TRAPID.png)
 
-[phylum_trapid](03_annotation/Phylum_composition_TRAPID.png)
+It's a whole world within this fish fry! Bacteria, Archaea, Ciliates, flatworms, viruses _etc_. 
 
 ![possible contaminants](03_annotation/contaminants.png)
 
