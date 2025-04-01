@@ -1,6 +1,52 @@
 library(ggplot2)
 library(openxlsx)
 
+## code for Fig. 1
+Pkn_filtlenN <- readLines("./Pkn_rnaspades_ssrf_filtlength.names.txt") #120k
+Chordata_eggNOG <- read.xlsx("Pkn_rnaspades_ssrf_out.emapper.annotations.fromChordata.xlsx", startRow = 3)
+Chordata_eggNOG <- Chordata_eggNOG$query
+Chordata_eggNOG <- sapply(Chordata_eggNOG, function(x) {substr(x, 1, nchar(x)-3)})
+Chordata_eggNOG <- intersect(Chordata_eggNOG, Pkn_filtlenN)
+
+trapid <-read.delim("./transcripts_tax_exp7497.txt")
+Chordata_TRAPID <- trapid[grep(pattern = "Chordata", trapid$lineage), ]$transcript_id
+
+nVennR::plotVenn(list(all=Pkn_filtlenN, fish_eggnog=Chordata_eggNOG, fish_trapid=Chordata_TRAPID), 
+                   outFile="fishos.svg", fontScale=1.5)
+
+#library(ggvenn)
+#ggvenn(data = list(all=Pkn_filtlenN, eg=Chordata_eggNOG, tra=Chordata_TRAPID))
+
+library(ggVennDiagram)
+ggVennDiagram(x=list(all=Pkn_filtlenN, fish_eggnog=Chordata_eggNOG, fish_trapid=Chordata_TRAPID), label_percent_digit = FALSE)
+
+library(BioVenn)
+svg("euler_fishes.svg")
+BioVenn::draw.venn(list_x=Pkn_filtlenN, list_y=Chordata_eggNOG, list_z=Chordata_TRAPID, 
+                   title = "", subtitle = "",
+                   xtitle = "All transcripts \n\n\n", xt_c = "black", x_c = "grey90",
+                   ytitle = "Chordata / eggNOG", yt_c = "brown4", y_c = "lightgoldenrod",
+                   ztitle = "\n Chordata / TRAPID", zt_c="royalblue", z_c="skyblue")
+dev.off()
+
+## TRAPID
+trapid_groups <- read.xlsx("TRAPID_selected_groups.xlsx")
+trapid_groups$Taxon <- factor(trapid_groups$Taxon, 
+                              levels = c( "Chordata", "Bacteria", "Platyhelminthes", "Arthropoda", 
+                                         "Fungi", "Viridiplantae", "Ciliophora", "Archaea", "Viruses",
+                                         "Other", "Unclassified"))
+
+ggplot(trapid_groups, aes(x=Taxon, y=Nseqs)) + 
+  geom_bar(stat='identity', col='#0000ff', fill='#85cceb80') + 
+  coord_flip() +
+  xlab('Taxon') + ylab('Number of annotated transcripts') + 
+  theme_bw(base_size = 14) + theme(axis.text = element_text(size=14), axis.title = element_text(size=16)) + 
+  scale_x_discrete(limits=rev)
+ggsave('kegg_transcripts.svg', device = svg, width = 8, height = 5)
+ggsave('trapid_transcripts.png', device = png, width = 8, height = 5)
+
+
+#### code not used in the manuscript
 ## full transcript list
 Pkn_all <- readLines("./Pkn_rnaspades_ssrf.names.txt") #192k
 Pkn_filtlenN <- readLines("./Pkn_rnaspades_ssrf_filtlength.names.txt") #120k
