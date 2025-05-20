@@ -1,6 +1,9 @@
 # Paracottus_knerii_transcriptome
 Reproducible code for the analysis of a *Paracottus knerii* ("stone sculpin" from Baikal) fry transcriptome.
 
+Now published! Pomazkin V, Drozdova P, Borvinskaya E, Indosova E, Timofeyev M, Gurkov A. De novo transcriptome assembly of the Baikal stone sculpin *Paracottus knerii* (Dybowski, 1874) from the Angara River as the first transcriptomic resource for Lake Baikal Cottidae. Acta Biologica Sibirica. 2025 17;11:541-50. [https://doi.org/10.5281/zenodo.15208846]
+
+
 ## Methods
 
 ### Raw data
