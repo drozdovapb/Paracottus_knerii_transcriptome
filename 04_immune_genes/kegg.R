@@ -7,6 +7,9 @@ kegg$ID
 
 eggnog <- read.xlsx("../03_annotation/Pkn_rnaspades_ssrf_out.emapper.annotations.fromChordata.xlsx", startRow = 3)
 
+immune_rows <- unlist(sapply(kegg$ID, function(k){c(grep(pattern = k, x = eggnog$KEGG_Pathway))}))
+eggnog_immune <- eggnog[immune_rows, ]
+write.xlsx(eggnog_immune, "../04_immune_genes/eggnog_immune_genes.xlsx")
 
 kegg$ntranscripts <- sapply(kegg$ID, function(k){
   sum(grepl(pattern = k, x = eggnog$KEGG_Pathway))})
